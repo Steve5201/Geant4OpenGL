@@ -1,0 +1,52 @@
+#version 330 core
+
+uniform sampler2D DIFFUSE00;
+uniform sampler2D SPECULAR00;
+
+in vec3 Normal;
+in vec3 FragPos;
+in vec2 TexCoords;
+out vec4 FragColor;
+
+uniform vec4 AmbientColor;
+uniform float AmbientStrength;
+
+uniform bool DrawFrame = false;
+uniform bool UseUserColor = false;
+uniform vec4 UserColor;
+
+uniform bool Select = false;
+uniform vec4 SelectId;
+
+uniform vec4 AmbientLightColor;
+uniform vec3 AmbientLightDirection;
+
+void main()
+{
+    vec4 Ambient0 = AmbientStrength * AmbientColor * (texture(DIFFUSE00, TexCoords));
+    vec4 Ambient1 = AmbientStrength * AmbientColor * UserColor;
+    vec4 Diffuse = 0.6 * (texture(DIFFUSE00, TexCoords) * max(dot(normalize(Normal), AmbientLightDirection), 0.0)) * AmbientLightColor;
+    vec4 Specular = texture(SPECULAR00, TexCoords) * 0.0;
+    if(!Select)
+    {
+        if(!UseUserColor)
+        {
+            FragColor = Ambient0 + Diffuse + Specular;
+        }
+        else
+        {
+            if(!DrawFrame)
+            {
+                FragColor = Ambient1 + 0.6 * (UserColor * max(dot(normalize(Normal), AmbientLightDirection), 0.0)) * AmbientLightColor;
+            }
+            else
+            {
+                FragColor = UserColor;
+            }
+        }
+    }
+    else
+    {
+        FragColor = SelectId;
+    }
+}

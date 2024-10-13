@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/shape">
+        <file>imgs/box.png</file>
+        <file>imgs/sphere.png</file>
+        <file>imgs/torus.png</file>
+        <file>imgs/tubs.png</file>
+        <file>imgs/source.png</file>
+    </qresource>
+</RCC>
