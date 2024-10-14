@@ -45,7 +45,15 @@ public:
     Geant4UserRunAction *getMaster() const;
     void setMaster(Geant4UserRunAction *newMaster);
 
+    int getRunNumber() const;
+    void setRunNumber(int newRunNumber);
+
+    int getDrawNumber() const;
+    void setDrawNumber(int newDrawNumber);
+
 private:
+    int runNumber;
+    int drawNumber;
     Geant4UserEventAction *eventAction;
     Geant4UserTrackingAction *trackingAction;
     Geant4UserSteppingAction *steppingAction;

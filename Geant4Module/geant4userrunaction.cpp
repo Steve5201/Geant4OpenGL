@@ -3,6 +3,8 @@
 
 Geant4UserRunAction::Geant4UserRunAction()
 {
+    runNumber = 100;
+    drawNumber = 1000;
     master = nullptr;
     eventAction = nullptr;
     trackingAction = nullptr;
@@ -19,11 +21,17 @@ void Geant4UserRunAction::BeginOfRunAction(const G4Run *run)
     if(isMaster)
     {
         clearTraks();
-        clearWorkRun();
+        foreach (auto run, workRuns)
+        {
+            run->setRunNumber(runNumber);
+            run->setDrawNumber(drawNumber);
+        }
     }
     else
     {
         clearTraks();
+        eventAction->setRunNumber(runNumber);
+        eventAction->setDrawNumber(drawNumber);
         if(trackingAction)
         {
             trackingAction->setTraks(&traks);
@@ -44,13 +52,6 @@ void Geant4UserRunAction::EndOfRunAction(const G4Run *run)
         foreach (auto run, workRuns)
         {
             addTraks(run->getTraks());
-        }
-    }
-    else
-    {
-        if(master)
-        {
-            master->addWorkRun(this);
         }
     }
 }
@@ -131,7 +132,10 @@ void Geant4UserRunAction::clearWorkRun()
 
 void Geant4UserRunAction::addWorkRun(Geant4UserRunAction *run)
 {
-    workRuns.append(run);
+    if(!workRuns.contains(run))
+    {
+        workRuns.append(run);
+    }
 }
 
 QVector<Geant4UserRunAction *> Geant4UserRunAction::getWorkRuns() const
@@ -152,4 +156,24 @@ Geant4UserRunAction *Geant4UserRunAction::getMaster() const
 void Geant4UserRunAction::setMaster(Geant4UserRunAction *newMaster)
 {
     master = newMaster;
+}
+
+int Geant4UserRunAction::getRunNumber() const
+{
+    return runNumber;
+}
+
+void Geant4UserRunAction::setRunNumber(int newRunNumber)
+{
+    runNumber = newRunNumber;
+}
+
+int Geant4UserRunAction::getDrawNumber() const
+{
+    return drawNumber;
+}
+
+void Geant4UserRunAction::setDrawNumber(int newDrawNumber)
+{
+    drawNumber = newDrawNumber;
 }

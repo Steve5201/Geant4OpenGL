@@ -504,17 +504,8 @@ void OpenGLWidget::drawUserLinesOnScene()
             col = Qt::gray;
         }
         updateUserColor(true, col, true);
-        int esize = userLines[lineType].size();
-        int estep = esize / 500;
         foreach (auto ets, userLines[lineType].keys())
         {
-            if(estep > 0)
-            {
-                estep--;
-                continue;
-            }
-            estep = esize / 500;
-
             QVector<QVector<QVector3D>> etsVector;
             uint size = 0;
             foreach (auto line, userLines[lineType][ets])

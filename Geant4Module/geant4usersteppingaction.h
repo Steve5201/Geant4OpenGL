@@ -18,7 +18,11 @@ public:
 
     void setTraks(QMap<std::string, QMap<int, QMap<int, QVector<QVector3D>>>> *newTraks);
 
+    bool getNeedRecord() const;
+    void setNeedRecord(bool newNeedRecord);
+
 private:
+    bool needRecord;
     QMap<std::string, QMap<int, QMap<int, QVector<QVector3D>>>> *traks;
 
 };

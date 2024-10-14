@@ -2,11 +2,7 @@
 #define GEANT4ACTIONINITIALIZATION_H
 
 #include "G4VUserActionInitialization.hh"
-#include "geant4userprimarygeneratoraction.h"
 #include "geant4userrunaction.h"
-#include "geant4usereventaction.h"
-#include "geant4usertrackingaction.h"
-#include "geant4usersteppingaction.h"
 
 class Geant4ActionInitialization : public G4VUserActionInitialization
 {
@@ -20,14 +16,6 @@ public:
 
     Geant4UserRunAction *getRunAction() const;
 
-    Geant4UserEventAction *getEventAction() const;
-
-    Geant4UserTrackingAction *getTrackingAction() const;
-
-    Geant4UserSteppingAction *getSteppingAction() const;
-
-    Geant4UserPrimaryGeneratorAction *getPrimaryGeneratorAction() const;
-
     // 设置粒子源的半径和厚度
     void setRadius(G4double radius);
     void setThickness(G4double thickness);
@@ -40,10 +28,6 @@ public:
 
 private:
     Geant4UserRunAction *runActionMaster;
-    Geant4UserEventAction *eventAction;
-    Geant4UserTrackingAction *trackingAction;
-    Geant4UserSteppingAction *steppingAction;
-    Geant4UserPrimaryGeneratorAction *primaryGeneratorAction;
     QVector<Geant4UserPrimaryGeneratorAction*> *pgas;
 
     G4double radius;

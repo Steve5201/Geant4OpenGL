@@ -161,6 +161,8 @@ private slots:
 
     void on_objname_textEdited(const QString &arg1);
 
+    void on_trakDisplay_valueChanged(int arg1);
+
 protected:
     virtual void showEvent(QShowEvent *event) override;
     virtual void resizeEvent(QResizeEvent *event) override;

@@ -1741,6 +1741,7 @@ void MainWindow::on_startSimulate_clicked()
     setEnabled(false);
     QCoreApplication::processEvents(QEventLoop::AllEvents,100);
     g4Manager->getRunManager()->Initialize();
+    g4Manager->getActionInitialization()->getRunAction()->setRunNumber(ui->simulateCount->value());
     g4Manager->getCmdManager()->ApplyCommand(QString::asprintf("/run/beamOn %d",ui->simulateCount->value()).toStdString());
     setEnabled(true);
     Geant4UserRunAction *runAction = g4Manager->getActionInitialization()->getRunAction();
@@ -1823,5 +1824,11 @@ void MainWindow::on_objname_textEdited(const QString &arg1)
             }
         }
     }
+}
+
+
+void MainWindow::on_trakDisplay_valueChanged(int arg1)
+{
+    g4Manager->getActionInitialization()->getRunAction()->setDrawNumber(arg1);
 }
 

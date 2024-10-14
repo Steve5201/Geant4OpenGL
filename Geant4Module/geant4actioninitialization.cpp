@@ -1,4 +1,8 @@
 #include "geant4actioninitialization.h"
+#include "geant4usereventaction.h"
+#include "geant4usertrackingaction.h"
+#include "geant4usersteppingaction.h"
+#include "geant4userprimarygeneratoraction.h"
 #include <QDebug>
 
 Geant4ActionInitialization::Geant4ActionInitialization()
@@ -12,6 +16,7 @@ void Geant4ActionInitialization::BuildForMaster() const
     G4Mutex mutex = G4MUTEX_INITIALIZER;
     G4AutoLock lock(&mutex);
     pgas->clear();
+    runActionMaster->clearWorkRun();
     SetUserAction(runActionMaster);
 }
 
@@ -29,37 +34,20 @@ void Geant4ActionInitialization::Build() const
     runAction->setTrackingAction(trackingAction);
     runAction->setSteppingAction(steppingAction);
     runAction->setPrimaryGeneratorAction(primaryGeneratorAction);
+    eventAction->setSteppingAction(steppingAction);
+    eventAction->setTrackingAction(trackingAction);
     SetUserAction(runAction);
     SetUserAction(eventAction);
     SetUserAction(trackingAction);
     SetUserAction(steppingAction);
     SetUserAction(primaryGeneratorAction);
     pgas->append(primaryGeneratorAction);
+    runActionMaster->addWorkRun(runAction);
 }
 
 Geant4UserRunAction *Geant4ActionInitialization::getRunAction() const
 {
     return runActionMaster;
-}
-
-Geant4UserEventAction *Geant4ActionInitialization::getEventAction() const
-{
-    return eventAction;
-}
-
-Geant4UserTrackingAction *Geant4ActionInitialization::getTrackingAction() const
-{
-    return trackingAction;
-}
-
-Geant4UserSteppingAction *Geant4ActionInitialization::getSteppingAction() const
-{
-    return steppingAction;
-}
-
-Geant4UserPrimaryGeneratorAction *Geant4ActionInitialization::getPrimaryGeneratorAction() const
-{
-    return primaryGeneratorAction;
 }
 
 void Geant4ActionInitialization::setRadius(G4double r)

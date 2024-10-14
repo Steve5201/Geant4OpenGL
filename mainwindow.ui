@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1556</width>
-    <height>842</height>
+    <height>848</height>
    </rect>
   </property>
   <property name="font">
@@ -1284,7 +1284,7 @@
          </item>
         </widget>
        </item>
-       <item row="3" column="1" rowspan="6" colspan="2">
+       <item row="4" column="1" rowspan="5" colspan="2">
         <widget class="QFrame" name="spt1">
          <property name="minimumSize">
           <size>
@@ -1315,6 +1315,32 @@
            <number>0</number>
           </property>
          </layout>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLabel" name="label_40">
+         <property name="text">
+          <string>显示轨迹</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QSpinBox" name="trakDisplay">
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>999999999</number>
+         </property>
+         <property name="value">
+          <number>1000</number>
+         </property>
         </widget>
        </item>
       </layout>
