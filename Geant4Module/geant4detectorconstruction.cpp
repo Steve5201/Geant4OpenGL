@@ -9,6 +9,8 @@
 Geant4DetectorConstruction::Geant4DetectorConstruction()
 {
     merged = false;
+    resKeV = 1;
+    useEventData = true;
     // 获取材料管理器
     G4NistManager* nist = G4NistManager::Instance();
 
@@ -39,6 +41,7 @@ void Geant4DetectorConstruction::ConstructSDandField()
         merged = false;
         worksDetectorMap.clear();
         detectorDataMap.clear();
+        detectorTrackDataMap.clear();
     }
     auto it = detectorNames.begin();
     while (it != detectorNames.end())
@@ -59,6 +62,8 @@ void Geant4DetectorConstruction::ConstructSDandField()
             }
         }
         SetSensitiveDetector(it.key(), detector);
+        detector->setLogicalVolume(it.key());
+        detector->setResKeV(resKeV);
         if(!G4Threading::IsMasterThread())
         {
             worksDetectorMap[G4Threading::G4GetThreadId()].insert(it.value(), detector);
@@ -86,25 +91,54 @@ QMap<std::string, QVector<double>> Geant4DetectorConstruction::getDetectorMap()
 {
     if(!merged)
     {
+        detectorDataMap.clear();
+        detectorTrackDataMap.clear();
         foreach (auto map, worksDetectorMap)
         {
             foreach (auto key, map.keys())
             {
                 QVector<double> &data = detectorDataMap[key];
-                QVector<double> mdata = map[key]->getData();
+                QVector<double> &trackData = detectorTrackDataMap[key];
+                QVector<double> mdata;
+                if(useEventData)
+                {
+                    mdata = map[key]->getData();
+                }
+                else
+                {
+                    mdata = map[key]->getTrackData();
+                }
                 for (int i = 0; i < mdata.size(); ++i)
                 {
-                    if(data.size() < i + 1)
+                    if(useEventData)
                     {
-                        data.resize(i + 1);
+                        if(data.size() < i + 1)
+                        {
+                            data.resize(i + 1);
+                        }
+                        data[i] += mdata[i];
                     }
-                    data[i] += mdata[i];
+                    else
+                    {
+                        if(trackData.size() < i + 1)
+                        {
+                            trackData.resize(i + 1);
+                        }
+                        trackData[i] += mdata[i];
+                    }
                 }
             }
         }
         merged = true;
     }
-    return detectorDataMap;
+    if(useEventData)
+    {
+        return detectorDataMap;
+    }
+    else
+    {
+        return detectorTrackDataMap;
+    }
 }
 
 void Geant4DetectorConstruction::setDetectorMap(const QMap<std::string, QVector<double>> &newDetectorMap)
@@ -130,4 +164,34 @@ bool Geant4DetectorConstruction::getMerged() const
 void Geant4DetectorConstruction::setMerged(bool newMerged)
 {
     merged = newMerged;
+}
+
+bool Geant4DetectorConstruction::getUseEventData() const
+{
+    return useEventData;
+}
+
+void Geant4DetectorConstruction::setUseEventData(bool newUseEventData)
+{
+    useEventData = newUseEventData;
+}
+
+QMap<std::string, QVector<double> > Geant4DetectorConstruction::getDetectorTrackDataMap() const
+{
+    return detectorTrackDataMap;
+}
+
+void Geant4DetectorConstruction::setDetectorTrackDataMap(const QMap<std::string, QVector<double> > &newDetectorTrackDataMap)
+{
+    detectorTrackDataMap = newDetectorTrackDataMap;
+}
+
+int Geant4DetectorConstruction::getResKeV() const
+{
+    return resKeV;
+}
+
+void Geant4DetectorConstruction::setResKeV(int newResKeV)
+{
+    resKeV = newResKeV;
 }

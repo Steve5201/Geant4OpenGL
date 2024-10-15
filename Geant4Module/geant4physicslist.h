@@ -6,7 +6,7 @@
 class Geant4PhysicsList : public G4VModularPhysicsList
 {
 public:
-    Geant4PhysicsList();
+    Geant4PhysicsList(bool highE = true);
 
     ~Geant4PhysicsList() override;
 

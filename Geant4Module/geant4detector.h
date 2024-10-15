@@ -1,6 +1,7 @@
 #ifndef GEANT4DETECTOR_H
 #define GEANT4DETECTOR_H
 
+#include <QHash>
 #include <QVector>
 #include "G4VSensitiveDetector.hh"
 #include "G4Step.hh"
@@ -34,11 +35,25 @@ public:
     QVector<double> getData() const;
     void setData(const QVector<double> &newData);
 
+    QVector<double> getTrackData() const;
+    void setTrackData(const QVector<double> &newTrackData);
+
+    G4LogicalVolume *getLogicalVolume() const;
+    void setLogicalVolume(G4LogicalVolume *newLogicalVolume);
+
+    int getResKeV() const;
+    void setResKeV(int newResKeV);
+
 private:
+    int resKeV;
     G4double resolution;                  // 探测器分辨率
     G4THitsCollection<Geant4Hit>* hitCollection; // 存储击中对象的集合
 
     QVector<double> data;
+    QHash<int, double> trackE;
+    QVector<double> trackData;
+
+    G4LogicalVolume *logicalVolume;
 
     G4double GaussianSmearing(G4double energy, G4double resolution);
 

@@ -7,7 +7,6 @@
 #include "mcsdevice.h"
 #include "openglwidget.h"
 #include "geant4manager.h"
-#include "geant4detector.h"
 #include "geant4shapes.h"
 
 QT_BEGIN_NAMESPACE
@@ -163,6 +162,8 @@ private slots:
 
     void on_trakDisplay_valueChanged(int arg1);
 
+    void on_resKeV_valueChanged(int arg1);
+
 protected:
     virtual void showEvent(QShowEvent *event) override;
     virtual void resizeEvent(QResizeEvent *event) override;
@@ -190,7 +191,7 @@ private:
     void setSource();
     void sendSceneToG4();
     QString getSceneInfo();
-    QVector<OpenGLObject*> getSceneObjectsByText(QString info);
+    QVector<OpenGLObject*> getSceneObjectsByText(QString info, OpenGLCamera *camera = nullptr);
 
 };
 #endif // MAINWINDOW_H

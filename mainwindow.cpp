@@ -89,6 +89,7 @@ void MainWindow::onObjectRemoved(QString objname)
             }
         }
     }
+    loadNames.remove(loadNames.indexOf(objname));
 }
 
 void MainWindow::onSelectObjectChanged(OpenGLObject *obj)
@@ -811,6 +812,10 @@ QString MainWindow::getSceneInfo()
     }
     QTextStream out(&buffer);
     out.setCodec("UTF-8");
+    QVector3D pos = glWidget->getCamera().getCameraPosition();
+    QVector3D dit = glWidget->getCamera().getCameraDirection();
+    out << pos.x() << "  " << pos.y() << "  " << pos.z() << "\n";
+    out << dit.x() << "  " << dit.y() << "  " << dit.z() << "\n";
     foreach (auto obj, glWidget->getObjectsRef())
     {
         out << "begin  ";
@@ -970,7 +975,7 @@ QString MainWindow::getSceneInfo()
     return rt;
 }
 
-QVector<OpenGLObject*> MainWindow::getSceneObjectsByText(QString info)
+QVector<OpenGLObject*> MainWindow::getSceneObjectsByText(QString info, OpenGLCamera *cam)
 {
     QVector<OpenGLObject*> rt;
     QBuffer buffer;
@@ -981,6 +986,16 @@ QVector<OpenGLObject*> MainWindow::getSceneObjectsByText(QString info)
     }
     QTextStream in(&buffer);
     in.setCodec("UTF-8");
+    double x,y,z;
+    x = y = z = 0.0;
+    in >> x >> y >> z;
+    QVector3D pos(x, y, z);
+    in >> x >> y >> z;
+    QVector3D dit(x, y, z);
+    if(cam)
+    {
+        cam->lookAt(pos, pos + dit, {0, 1, 0});
+    }
     QString str;
     float val;
     while (!in.atEnd())
@@ -1683,7 +1698,6 @@ void MainWindow::on_sorT_currentTextChanged(const QString &arg1)
 
 void MainWindow::on_loadScene_clicked()
 {
-    loadNames.clear();
     glWidget->removeAllObject();
     QString fname = QFileDialog::getOpenFileName(this,"","","*.scene");
     if(fname.isEmpty())
@@ -1698,7 +1712,8 @@ void MainWindow::on_loadScene_clicked()
     QTextStream in(&file);
     in.setCodec("UTF-8");
     QString info = in.readAll();
-    auto objlist = getSceneObjectsByText(info);
+    OpenGLCamera cam;
+    auto objlist = getSceneObjectsByText(info, &cam);
     foreach (auto obj, objlist)
     {
         glWidget->addObject(obj);
@@ -1708,6 +1723,7 @@ void MainWindow::on_loadScene_clicked()
             hasSource = true;
         }
     }
+    glWidget->setCamera(cam);
     QMessageBox::information(this,"提示","导入成功");
 }
 
@@ -1733,7 +1749,6 @@ void MainWindow::on_saveScene_clicked()
 void MainWindow::on_clearScene_clicked()
 {
     glWidget->removeAllObject();
-    loadNames.clear();
 }
 
 void MainWindow::on_startSimulate_clicked()
@@ -1826,9 +1841,12 @@ void MainWindow::on_objname_textEdited(const QString &arg1)
     }
 }
 
-
 void MainWindow::on_trakDisplay_valueChanged(int arg1)
 {
     g4Manager->getActionInitialization()->getRunAction()->setDrawNumber(arg1);
 }
 
+void MainWindow::on_resKeV_valueChanged(int arg1)
+{
+    g4Manager->getDetectorConstruction()->setResKeV(arg1);
+}

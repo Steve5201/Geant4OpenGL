@@ -21,15 +21,17 @@ void Geant4UserRunAction::BeginOfRunAction(const G4Run *run)
     if(isMaster)
     {
         clearTraks();
-        foreach (auto run, workRuns)
-        {
-            run->setRunNumber(runNumber);
-            run->setDrawNumber(drawNumber);
-        }
+        clearWorkRun();
     }
     else
     {
         clearTraks();
+        if(master)
+        {
+            master->addWorkRun(this);
+            runNumber = master->getRunNumber();
+            drawNumber = master->getDrawNumber();
+        }
         eventAction->setRunNumber(runNumber);
         eventAction->setDrawNumber(drawNumber);
         if(trackingAction)
@@ -166,6 +168,10 @@ int Geant4UserRunAction::getRunNumber() const
 void Geant4UserRunAction::setRunNumber(int newRunNumber)
 {
     runNumber = newRunNumber;
+    foreach (auto run, workRuns)
+    {
+        run->setRunNumber(runNumber);
+    }
 }
 
 int Geant4UserRunAction::getDrawNumber() const
@@ -176,4 +182,8 @@ int Geant4UserRunAction::getDrawNumber() const
 void Geant4UserRunAction::setDrawNumber(int newDrawNumber)
 {
     drawNumber = newDrawNumber;
+    foreach (auto run, workRuns)
+    {
+        run->setDrawNumber(drawNumber);
+    }
 }
