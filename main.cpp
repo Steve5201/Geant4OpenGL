@@ -28,8 +28,9 @@ int main(int argc, char *argv[])
     {
         idealThreadCount = 1;
     }
-    QSettings settings("base/g4.ini", QSettings::IniFormat);
+    QSettings settings("g4.ini", QSettings::IniFormat);
     int userThreadCount = settings.value("General/ThreadCount").toInt();
+    bool highEM = settings.value("General/HighEM").toBool();
     if(userThreadCount > idealThreadCount)
     {
         userThreadCount = idealThreadCount;
@@ -42,7 +43,7 @@ int main(int argc, char *argv[])
     {
         threadCount = idealThreadCount;
     }
-    g4->initialize(threadCount);
+    g4->initialize(threadCount, highEM);
     QApplication a(argc, argv);
     MainWindow w;
     w.setG4Manager(g4);

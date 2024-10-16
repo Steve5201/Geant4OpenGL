@@ -156,6 +156,8 @@ private slots:
 
     void on_detectors_currentTextChanged(const QString &arg1);
 
+    void on_loadSpectrum_clicked();
+
     void on_saveSpectrum_clicked();
 
     void on_objname_textEdited(const QString &arg1);

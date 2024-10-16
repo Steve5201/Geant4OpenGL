@@ -44,6 +44,18 @@ add_executable(A0
 
 )
 
+set(EXAMPLEB1_SCRIPTS
+  g4.ini
+  )
+
+foreach(_script ${EXAMPLEB1_SCRIPTS})
+  configure_file(
+    ${PROJECT_SOURCE_DIR}/${_script}
+    ${PROJECT_BINARY_DIR}/${_script}
+    COPYONLY
+    )
+endforeach()
+
 target_link_libraries(A0 PRIVATE Qt5::Widgets Qt5::Charts
     SpectrumModule
     OpenGLModule

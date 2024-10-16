@@ -1,8 +1,8 @@
 #include "geant4manager.h"
 #include <QDebug>
 #include <QApplication>
-#include "G4RunManagerFactory.hh"
 #include "G4NistManager.hh"
+#include "G4MTRunManager.hh"
 #include "G4GeometryManager.hh"
 #include "G4NistManager.hh"
 #include "G4TransportationManager.hh"
@@ -25,11 +25,11 @@ Geant4Manager::~Geant4Manager()
     delete visManager;
 }
 
-void Geant4Manager::initialize(int nthread)
+void Geant4Manager::initialize(int nthread, bool highEM)
 {
     if(!runManager)
     {
-        runManager = G4RunManagerFactory::CreateRunManager(G4RunManagerType::Default);
+        runManager = new G4MTRunManager();
     }
     runManager->SetNumberOfThreads(nthread);
     if(!detectorConstruction)
@@ -39,7 +39,7 @@ void Geant4Manager::initialize(int nthread)
     runManager->SetUserInitialization(detectorConstruction);
     if(!physicsList)
     {
-        physicsList = new Geant4PhysicsList();
+        physicsList = new Geant4PhysicsList(highEM);
     }
     runManager->SetUserInitialization(physicsList);
     if(!actionInitialization)
@@ -71,7 +71,7 @@ void Geant4Manager::initialize(int nthread)
     }
 }
 
-void Geant4Manager::initialize(int argc, char *argv[], int nthread)
+void Geant4Manager::initialize(int argc, char *argv[], int nthread, bool highEM)
 {
     if(!uiExecutive)
     {
@@ -85,7 +85,7 @@ void Geant4Manager::initialize(int argc, char *argv[], int nthread)
     {
         delete runManager;
     }
-    runManager = G4RunManagerFactory::CreateRunManager(G4RunManagerType::Default);
+    runManager = new G4MTRunManager();
     runManager->SetNumberOfThreads(nthread);
     if(!detectorConstruction)
     {
@@ -94,7 +94,7 @@ void Geant4Manager::initialize(int argc, char *argv[], int nthread)
     runManager->SetUserInitialization(detectorConstruction);
     if(!physicsList)
     {
-        physicsList = new Geant4PhysicsList();
+        physicsList = new Geant4PhysicsList(highEM);
     }
     runManager->SetUserInitialization(physicsList);
     if(!actionInitialization)

@@ -9,6 +9,7 @@
 MCSDevice::MCSDevice(QObject *parent)
     : QObject(parent), handleChannel(0), mainSpectrum(nullptr), backgroundSpectrum(nullptr)
 {
+    resKeV = 1;
     // 算法对象
     analyzeAlgorith = new MCSAnalyzeAlgorithm;
     // 原始视图窗口
@@ -110,6 +111,7 @@ void MCSDevice::loadSpectrumFromFile()
             delete mainSpectrum;
         }
         mainSpectrum = s1;
+        originChartView->setChannelRange(0, mainSpectrum->getMaxEnergy());
     }
     else
     {
@@ -122,6 +124,7 @@ void MCSDevice::loadSpectrumFromFile()
             delete backgroundSpectrum;
         }
         backgroundSpectrum = s1;
+        originChartView->setChannelRange(0, backgroundSpectrum->getMaxEnergy());
     }
 }
 
@@ -215,7 +218,7 @@ void MCSDevice::onCurcorMoved(double c1, double c2)
             ct2 = backgroundSpectrum->getData(e2);
         }
     }
-    QString posinfo = QString::asprintf("光标1：道址%.2f，能量%.2f，计数%.2f\t光标2：道址%.2f，能量%.2f，计数%.2f", c1, e1, ct1 ,c2, e2, ct2);
+    QString posinfo = QString::asprintf("光标1：道址%.2f，能量%.2fKeV，计数%.2f\t光标2：道址%.2f，能量%.2fKeV，计数%.2f", c1, e1 / resKeV, ct1 ,c2, e2 / resKeV, ct2);
     emit newCursorInfo(posinfo);
 }
 
@@ -272,6 +275,16 @@ void MCSDevice::onNewDataReceived(QVector<double> data)
 void MCSDevice::onNewAlgorithmParameters(Parameter p)
 {
     parameter = p;
+}
+
+int MCSDevice::getResKeV() const
+{
+    return resKeV;
+}
+
+void MCSDevice::setResKeV(int newResKeV)
+{
+    resKeV = newResKeV;
 }
 
 QScatterSeries *MCSDevice::getLine(MCSSpectrum *spectrum)

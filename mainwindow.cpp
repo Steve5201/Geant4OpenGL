@@ -1755,9 +1755,8 @@ void MainWindow::on_startSimulate_clicked()
 {
     setEnabled(false);
     QCoreApplication::processEvents(QEventLoop::AllEvents,100);
-    g4Manager->getRunManager()->Initialize();
     g4Manager->getActionInitialization()->getRunAction()->setRunNumber(ui->simulateCount->value());
-    g4Manager->getCmdManager()->ApplyCommand(QString::asprintf("/run/beamOn %d",ui->simulateCount->value()).toStdString());
+    g4Manager->getRunManager()->BeamOn(ui->simulateCount->value());
     setEnabled(true);
     Geant4UserRunAction *runAction = g4Manager->getActionInitialization()->getRunAction();
     if(runAction)
@@ -1810,6 +1809,11 @@ void MainWindow::on_detectors_currentTextChanged(const QString &arg1)
     }
 }
 
+void MainWindow::on_loadSpectrum_clicked()
+{
+    device->loadSpectrumFromFile();
+}
+
 void MainWindow::on_saveSpectrum_clicked()
 {
     device->saveSpectrumToFile();
@@ -1849,4 +1853,5 @@ void MainWindow::on_trakDisplay_valueChanged(int arg1)
 void MainWindow::on_resKeV_valueChanged(int arg1)
 {
     g4Manager->getDetectorConstruction()->setResKeV(arg1);
+    device->setResKeV(arg1);
 }

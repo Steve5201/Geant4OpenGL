@@ -16,8 +16,8 @@ public:
     Geant4Manager();
     ~Geant4Manager();
 
-    void initialize(int nthread = 1);
-    void initialize(int argc, char *argv[], int nthread = 1);
+    void initialize(int nthread = 1, bool highEM = false);
+    void initialize(int argc, char *argv[], int nthread = 1, bool highEM = false);
     void clearGeometry();
 
     G4UImanager *getCmdManager() const;

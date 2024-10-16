@@ -276,7 +276,7 @@
           <enum>QFrame::Shape::Box</enum>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>5</number>
          </property>
          <widget class="QWidget" name="page">
           <layout class="QGridLayout" name="gridLayout_11">
@@ -326,6 +326,9 @@
           <layout class="QGridLayout" name="gridLayout_5">
            <item row="1" column="1">
             <widget class="QDoubleSpinBox" name="halfwidth">
+             <property name="suffix">
+              <string>cm</string>
+             </property>
              <property name="decimals">
               <number>6</number>
              </property>
@@ -389,6 +392,9 @@
            </item>
            <item row="2" column="1">
             <widget class="QDoubleSpinBox" name="halfheight">
+             <property name="suffix">
+              <string>cm</string>
+             </property>
              <property name="decimals">
               <number>6</number>
              </property>
@@ -415,6 +421,9 @@
            </item>
            <item row="0" column="1">
             <widget class="QDoubleSpinBox" name="halflen">
+             <property name="suffix">
+              <string>cm</string>
+             </property>
              <property name="decimals">
               <number>6</number>
              </property>
@@ -511,6 +520,9 @@
            </item>
            <item row="1" column="1">
             <widget class="QDoubleSpinBox" name="outR">
+             <property name="suffix">
+              <string>cm</string>
+             </property>
              <property name="minimum">
               <double>0.010000000000000</double>
              </property>
@@ -524,6 +536,9 @@
            </item>
            <item row="5" column="1">
             <widget class="QDoubleSpinBox" name="dtheta">
+             <property name="suffix">
+              <string/>
+             </property>
              <property name="maximum">
               <double>180.000000000000000</double>
              </property>
@@ -541,6 +556,9 @@
            </item>
            <item row="2" column="1">
             <widget class="QDoubleSpinBox" name="sphi">
+             <property name="suffix">
+              <string/>
+             </property>
              <property name="maximum">
               <double>360.000000000000000</double>
              </property>
@@ -558,6 +576,9 @@
            </item>
            <item row="3" column="1">
             <widget class="QDoubleSpinBox" name="dphi">
+             <property name="suffix">
+              <string/>
+             </property>
              <property name="maximum">
               <double>360.000000000000000</double>
              </property>
@@ -565,6 +586,9 @@
            </item>
            <item row="4" column="1">
             <widget class="QDoubleSpinBox" name="stheta">
+             <property name="suffix">
+              <string/>
+             </property>
              <property name="maximum">
               <double>180.000000000000000</double>
              </property>
@@ -572,6 +596,9 @@
            </item>
            <item row="0" column="1">
             <widget class="QDoubleSpinBox" name="inR">
+             <property name="suffix">
+              <string>cm</string>
+             </property>
              <property name="minimum">
               <double>0.000000000000000</double>
              </property>
@@ -616,6 +643,9 @@
           <layout class="QGridLayout" name="gridLayout_7">
            <item row="2" column="1">
             <widget class="QDoubleSpinBox" name="tubhalfheight">
+             <property name="suffix">
+              <string>cm</string>
+             </property>
              <property name="minimum">
               <double>0.010000000000000</double>
              </property>
@@ -626,6 +656,9 @@
            </item>
            <item row="0" column="1">
             <widget class="QDoubleSpinBox" name="tubinR">
+             <property name="suffix">
+              <string>cm</string>
+             </property>
              <property name="minimum">
               <double>0.000000000000000</double>
              </property>
@@ -649,6 +682,9 @@
            </item>
            <item row="4" column="1">
             <widget class="QDoubleSpinBox" name="tublendeg">
+             <property name="suffix">
+              <string/>
+             </property>
              <property name="maximum">
               <double>360.000000000000000</double>
              </property>
@@ -656,6 +692,9 @@
            </item>
            <item row="1" column="1">
             <widget class="QDoubleSpinBox" name="tuboutR">
+             <property name="suffix">
+              <string>cm</string>
+             </property>
              <property name="minimum">
               <double>0.010000000000000</double>
              </property>
@@ -679,6 +718,9 @@
            </item>
            <item row="3" column="1">
             <widget class="QDoubleSpinBox" name="tubstartdeg">
+             <property name="suffix">
+              <string/>
+             </property>
              <property name="maximum">
               <double>360.000000000000000</double>
              </property>
@@ -776,6 +818,9 @@
            </item>
            <item row="2" column="1">
             <widget class="QDoubleSpinBox" name="torR">
+             <property name="suffix">
+              <string>cm</string>
+             </property>
              <property name="minimum">
               <double>0.010000000000000</double>
              </property>
@@ -816,6 +861,9 @@
            </item>
            <item row="3" column="1">
             <widget class="QDoubleSpinBox" name="torstartdeg">
+             <property name="suffix">
+              <string/>
+             </property>
              <property name="maximum">
               <double>360.000000000000000</double>
              </property>
@@ -846,6 +894,9 @@
            </item>
            <item row="1" column="1">
             <widget class="QDoubleSpinBox" name="toroutR">
+             <property name="suffix">
+              <string>cm</string>
+             </property>
              <property name="minimum">
               <double>0.010000000000000</double>
              </property>
@@ -859,6 +910,9 @@
            </item>
            <item row="4" column="1">
             <widget class="QDoubleSpinBox" name="torlendeg">
+             <property name="suffix">
+              <string/>
+             </property>
              <property name="maximum">
               <double>360.000000000000000</double>
              </property>
@@ -866,6 +920,9 @@
            </item>
            <item row="0" column="1">
             <widget class="QDoubleSpinBox" name="torinR">
+             <property name="suffix">
+              <string>cm</string>
+             </property>
              <property name="minimum">
               <double>0.000000000000000</double>
              </property>
@@ -940,6 +997,9 @@
            </item>
            <item row="1" column="1">
             <widget class="QDoubleSpinBox" name="sorL">
+             <property name="suffix">
+              <string>cm</string>
+             </property>
              <property name="maximum">
               <double>99990000.000000000000000</double>
              </property>
@@ -950,6 +1010,9 @@
            </item>
            <item row="0" column="1">
             <widget class="QDoubleSpinBox" name="sorR">
+             <property name="suffix">
+              <string>cm</string>
+             </property>
              <property name="maximum">
               <double>99990000.000000000000000</double>
              </property>
@@ -980,6 +1043,9 @@
            </item>
            <item row="2" column="1">
             <widget class="QDoubleSpinBox" name="sorE">
+             <property name="suffix">
+              <string>KeV</string>
+             </property>
              <property name="maximum">
               <double>99990000.000000000000000</double>
              </property>
@@ -1020,8 +1086,14 @@
        <property name="spacing">
         <number>0</number>
        </property>
-       <item row="6" column="0">
-        <widget class="QDoubleSpinBox" name="cameraRotateSpeed">
+       <item row="8" column="0">
+        <widget class="QDoubleSpinBox" name="cameraMoveSpeed">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignCenter</set>
          </property>
@@ -1033,6 +1105,13 @@
          </property>
          <property name="value">
           <double>0.100000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="saveScene">
+         <property name="text">
+          <string>导出场景</string>
          </property>
         </widget>
        </item>
@@ -1061,185 +1140,37 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="1">
-        <widget class="QPushButton" name="prepareG4">
-         <property name="text">
-          <string>构建场景</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QPushButton" name="saveSpectrum">
-         <property name="text">
-          <string>  保存谱线  </string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="0">
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>相机移动速度</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="0">
-        <widget class="QLabel" name="label_41">
-         <property name="text">
-          <string>能谱通道系数</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0">
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>相机旋转速度</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="0">
-        <widget class="QDoubleSpinBox" name="cameraMoveSpeed">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
-         <property name="maximum">
-          <double>99990000.000000000000000</double>
-         </property>
-         <property name="singleStep">
-          <double>0.100000000000000</double>
-         </property>
-         <property name="value">
-          <double>0.100000000000000</double>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QComboBox" name="detectors">
-         <item>
-          <property name="text">
-           <string>不显示</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QPushButton" name="loadScene">
-         <property name="text">
-          <string>导入场景</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QLabel" name="label_40">
-         <property name="text">
-          <string>显示轨迹</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QPushButton" name="clearScene">
-         <property name="text">
-          <string>清空场景</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QPushButton" name="drawMode">
-         <property name="text">
-          <string>一般模式</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="2">
-        <widget class="QSpinBox" name="trakDisplay">
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
-         <property name="minimum">
-          <number>1</number>
-         </property>
-         <property name="maximum">
-          <number>999999999</number>
-         </property>
-         <property name="value">
-          <number>1000</number>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QPushButton" name="startSimulate">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
+       <item row="4" column="1" rowspan="7" colspan="2">
+        <widget class="QFrame" name="spt1">
          <property name="minimumSize">
           <size>
-           <width>189</width>
-           <height>0</height>
+           <width>20</width>
+           <height>10</height>
           </size>
          </property>
-         <property name="text">
-          <string>  开始模拟  </string>
+         <property name="frameShape">
+          <enum>QFrame::Shape::Box</enum>
          </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QPushButton" name="bInView">
-         <property name="text">
-          <string>进入相机</string>
+         <property name="frameShadow">
+          <enum>QFrame::Shadow::Raised</enum>
          </property>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="QPushButton" name="bResetView">
-         <property name="text">
-          <string>重置相机</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QPushButton" name="saveScene">
-         <property name="text">
-          <string>导出场景</string>
-         </property>
-        </widget>
-       </item>
-       <item row="10" column="0">
-        <widget class="QSpinBox" name="resKeV">
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
-         <property name="minimum">
-          <number>1</number>
-         </property>
-         <property name="maximum">
-          <number>99999</number>
-         </property>
-         <property name="value">
-          <number>1</number>
-         </property>
+         <layout class="QGridLayout" name="gridLayout_12">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <property name="spacing">
+           <number>0</number>
+          </property>
+         </layout>
         </widget>
        </item>
        <item row="0" column="3" rowspan="11">
@@ -1345,37 +1276,172 @@
          </layout>
         </widget>
        </item>
-       <item row="4" column="1" rowspan="7" colspan="2">
-        <widget class="QFrame" name="spt1">
+       <item row="2" column="0">
+        <widget class="QPushButton" name="clearScene">
+         <property name="text">
+          <string>清空场景</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="0">
+        <widget class="QSpinBox" name="resKeV">
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>99999</number>
+         </property>
+         <property name="value">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QPushButton" name="saveSpectrum">
+         <property name="text">
+          <string>  保存谱线  </string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QPushButton" name="bResetView">
+         <property name="text">
+          <string>重置相机</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>相机移动速度</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QPushButton" name="bInView">
+         <property name="text">
+          <string>进入相机</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>相机旋转速度</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QDoubleSpinBox" name="cameraRotateSpeed">
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+         <property name="maximum">
+          <double>99990000.000000000000000</double>
+         </property>
+         <property name="singleStep">
+          <double>0.100000000000000</double>
+         </property>
+         <property name="value">
+          <double>0.100000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="loadScene">
+         <property name="text">
+          <string>导入场景</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="drawMode">
+         <property name="text">
+          <string>一般模式</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QSpinBox" name="trakDisplay">
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+         <property name="suffix">
+          <string>轨迹</string>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>100000</number>
+         </property>
+         <property name="value">
+          <number>1000</number>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="0">
+        <widget class="QLabel" name="label_41">
+         <property name="text">
+          <string>能谱通道系数</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QComboBox" name="detectors">
+         <item>
+          <property name="text">
+           <string>不显示</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QPushButton" name="prepareG4">
+         <property name="text">
+          <string>构建场景</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QPushButton" name="startSimulate">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="minimumSize">
           <size>
-           <width>20</width>
-           <height>10</height>
+           <width>189</width>
+           <height>0</height>
           </size>
          </property>
-         <property name="frameShape">
-          <enum>QFrame::Shape::Box</enum>
+         <property name="text">
+          <string>  开始模拟  </string>
          </property>
-         <property name="frameShadow">
-          <enum>QFrame::Shadow::Raised</enum>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QPushButton" name="loadSpectrum">
+         <property name="text">
+          <string>导入谱线</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_12">
-          <property name="leftMargin">
-           <number>0</number>
-          </property>
-          <property name="topMargin">
-           <number>0</number>
-          </property>
-          <property name="rightMargin">
-           <number>0</number>
-          </property>
-          <property name="bottomMargin">
-           <number>0</number>
-          </property>
-          <property name="spacing">
-           <number>0</number>
-          </property>
-         </layout>
         </widget>
        </item>
       </layout>

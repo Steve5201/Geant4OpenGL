@@ -52,6 +52,9 @@ public:
 
     MCSOriginChartView *getOriginChartView() const;
 
+    int getResKeV() const;
+    void setResKeV(int newResKeV);
+
 signals:
     void newCursorInfo(QString info);
 
@@ -61,6 +64,7 @@ public slots:
     void onNewAlgorithmParameters(Parameter parameter);
 
 private:
+    int resKeV;
     int handleChannel;
     Parameter parameter;
     MCSScaledChartView *scaledChartView;
